@@ -1,0 +1,38 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: pip install -e ".[all]"
+      - name: Offline tests (no API keys, no cost)
+        run: pytest -m "not live" -v --cov=reflexion_agent --cov-report=term-missing
+
+  live:
+    # Runs only on push, and each provider only if its repository secret exists
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    env:
+      GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[all]"
+      - name: Live LLM evaluation (skipped without secrets)
+        run: pytest -m live -v

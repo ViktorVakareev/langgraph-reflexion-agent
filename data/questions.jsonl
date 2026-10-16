@@ -1,0 +1,12 @@
+{"id": "q01", "question": "How do I test my chatbot for prompt injection?", "expected_sources": ["kb://prompt-injection-testing"]}
+{"id": "q02", "question": "How can I trust an LLM-as-judge score?", "expected_sources": ["kb://llm-as-judge"]}
+{"id": "q03", "question": "My LLM tests are flaky. How do I make them reliable?", "expected_sources": ["kb://flaky-tests-nondeterminism"]}
+{"id": "q04", "question": "How do I unit test a LangChain agent without calling a paid API?", "expected_sources": ["kb://mocking-llm-calls-pytest"]}
+{"id": "q05", "question": "How should I evaluate a RAG system's answers?", "expected_sources": ["kb://rag-evaluation"]}
+{"id": "q06", "question": "How do I catch regressions when we change the prompt or model?", "expected_sources": ["kb://regression-testing-llm-apps"]}
+{"id": "q07", "question": "What should I assert on when testing a tool-calling agent?", "expected_sources": ["kb://testing-tool-calling-agents"]}
+{"id": "q08", "question": "How do I validate LLM output before using it in code?", "expected_sources": ["kb://output-validation-guardrails"]}
+{"id": "q09", "question": "How can I tell if my test suite really checks the guardrails?", "expected_sources": ["kb://mutation-testing"]}
+{"id": "q10", "question": "How do I keep the cost of an iterative agent under control?", "expected_sources": ["kb://cost-latency-testing"]}
+{"id": "q11", "question": "What belongs in a red teaming safety suite?", "expected_sources": ["kb://red-teaming-safety-tests"]}
+{"id": "q12", "question": "How do I build a golden dataset for evals?", "expected_sources": ["kb://llm-evals-basics"]}

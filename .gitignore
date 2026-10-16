@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+.env
+# local checkpoint databases
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+# original course material (IBM copyright) - kept locally, not published
+*-v1.ipynb
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

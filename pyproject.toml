@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "langgraph-reflexion-agent"
+version = "1.0.0"
+description = "A Reflexion research agent with LangGraph 1.x: draft, self-critique, search a local knowledge base, revise with citations that are checked against what was retrieved, with a bounded loop; Gemini (free), OpenAI or offline mode."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "VictorV" }]
+keywords = ["langgraph", "langchain", "reflexion", "ai-agents", "self-improving-agents", "rag", "citations", "llm-evaluation", "pydantic", "tool-calling", "gemini", "openai", "python", "pytest", "portfolio-project"]
+dependencies = [
+    "langgraph>=1.0",
+    "langgraph-checkpoint-sqlite>=2.0",
+    "langchain-core>=1.0",
+    "pydantic>=2.7",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+gemini = ["langchain-google-genai>=3.0"]
+openai = ["langchain-openai>=1.0"]
+tavily = ["langchain-tavily>=0.2"]
+dev = ["pytest>=8", "pytest-cov>=5", "nbclient>=0.10", "nbformat>=5.10", "ipykernel>=6"]
+all = ["langgraph-reflexion-agent[gemini,openai,dev]"]
+
+[project.scripts]
+reflexion-agent = "reflexion_agent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["live: calls a real LLM API (needs GOOGLE_API_KEY or OPENAI_API_KEY); skipped otherwise"]
